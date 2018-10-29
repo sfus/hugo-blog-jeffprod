@@ -16,7 +16,7 @@
     <!-- nav -->
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{{ .Site.BaseURL | absURL }}">Home</a>
+            <a class="navbar-item" href="{{ .Site.BaseURL | absURL }}">HOME</a>
         </div>
     </nav>
     <!-- /nav -->
@@ -33,12 +33,18 @@
                         #{{ .Title }}
                     {{ else if eq .Type "archives" }}
                         Archive {{ .Title }}
+                    {{ else if .Page.IsHome }}
+                      <a href="{{ .Site.BaseURL | absURL }}"><img src="{{ .Site.Params.authorIconLarge }}"> {{ .Site.Title }}</a></p>
                     {{ else }}
                         {{ .Title }}
                     {{ end }}
                 </h1>
                 {{ if eq .Type "article" }}
                     {{ .Date.Format "January 2, 2006" }} &middot;&nbsp;{{ .ReadingTime }} min read
+                {{ end }}
+
+                {{ if not .Page.IsHome }}
+                <p class="is-size-4"><a href="{{ .Site.BaseURL | absURL }}"><img src="{{ .Site.Params.authorIcon }}"> {{ .Site.Title }}</a></p>
                 {{ end }}
             </div>
         </div>
