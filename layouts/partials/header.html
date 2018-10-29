@@ -29,6 +29,8 @@
                 <h1 class="title is-size-1">
                     {{ if eq .Type "tags" }}
                         #{{ .Title }}
+                    {{ else if eq .Type "categories" }}
+                        #{{ .Title }}
                     {{ else if eq .Type "archives" }}
                         Archive {{ .Title }}
                     {{ else }}
